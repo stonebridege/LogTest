@@ -13,4 +13,10 @@ public class sfj4jTest {
         Slf4jDemo slf4jDemo = new Slf4jDemo();
         slf4jDemo.test02();
     }
+
+    @Test
+    public void test03() {
+        Slf4jDemo slf4jDemo = new Slf4jDemo();
+        slf4jDemo.test03();
+    }
 }

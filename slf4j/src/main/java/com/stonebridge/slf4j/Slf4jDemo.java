@@ -46,7 +46,36 @@ public class Slf4jDemo {
         String name = "张三";
         int age = 23;
         //logger.info("学生信息-姓名："+name+"；年龄："+age);
-        logger.info("学生信息-姓名：{}，年龄：{}",new Object[]{name,age});
+        logger.info("学生信息-姓名：{}，年龄：{}", new Object[]{name, age});
         logger.info("学生信息-姓名：{}，年龄：{}", name, age);
     }
+
+
+public void test03() {
+
+    /*
+        日志对于异常信息的处理
+
+        一般情况下，我们在开发中的异常信息，都是记录在控制台上（我们开发环境的一种日志打印方式）
+        我们会根据异常信息提取出有用的线索，来调试bug
+
+        但是在真实生产环境中（项目上线），对于服务器或者是系统相关的问题
+                在控制台上其实也会提供相应的异常或者错误信息的输出
+        但是这种错误输出方式（输出的时间，位置，格式...）都是服务器系统默认的
+
+        我们可以通过日志技术，选择将异常以日志打印的方式，进行输出查看
+        输出的时间，位置（控制台，文件），格式，完全由我们自己去进行定义
+            */
+    //System.out.println(123);
+    Logger logger = LoggerFactory.getLogger(Slf4jDemo.class);
+    try {
+        Class.forName("aaa");
+    } catch (ClassNotFoundException e) {
+        //打印栈追踪信息
+        //e.printStackTrace();
+        logger.info("XXX类中的XXX方法出现了异常，请及时关注信息");
+        //e是引用类型对象，不能根前面的{}做有效的字符串拼接。我们不用加{},直接后面加上异常对象e即可
+        logger.error("具体错误是：{}", e.getMessage(), e);
+    }
+}
 }
