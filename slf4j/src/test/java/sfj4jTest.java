@@ -8,6 +8,7 @@ public class sfj4jTest {
         Slf4jDemo slf4jDemo = new Slf4jDemo();
         slf4jDemo.test01();
     }
+
     @Test
     public void test02() {
         Slf4jDemo slf4jDemo = new Slf4jDemo();
@@ -19,6 +20,7 @@ public class sfj4jTest {
         Slf4jDemo slf4jDemo = new Slf4jDemo();
         slf4jDemo.test03();
     }
+
     @Test
     public void test04() {
         Slf4jDemo slf4jDemo = new Slf4jDemo();
@@ -29,5 +31,11 @@ public class sfj4jTest {
     public void test05() {
         Slf4jDemo slf4jDemo = new Slf4jDemo();
         slf4jDemo.test05();
+    }
+
+    @Test
+    public void test06() {
+        Slf4jDemo slf4jDemo = new Slf4jDemo();
+        slf4jDemo.test06();
     }
 }

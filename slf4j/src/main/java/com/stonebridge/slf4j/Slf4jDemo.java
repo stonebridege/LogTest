@@ -163,4 +163,38 @@ public class Slf4jDemo {
         }
 
     }
+
+    public void test06() {
+
+        /*
+
+        接下来我们来绑定log4j
+                由于log4j是在slf4j之前出品的日志框架实现
+        所以并没有遵循slf4j的API规范
+            （之前集成的logback，是slf4j之后出品的日志框架实现
+        logback就是按照slf4j的标准指定的API，所以我们导入依赖就能用）
+
+        如果想要使用，需要绑定一个适配器
+        叫做slf4j-log4j12
+        再导入log4j的实现
+
+        测试：
+        log4j:
+        WARN No appenders could be found for logger(com.bjpowernode.slf4j.test01.SLF4JTest01).
+                log4j:WARN Please initialize the log4j system properly.
+                log4j:WARN See http:
+            //logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+
+        虽然日志信息没有打印出来，那么根据警告信息可以得出：
+        使用了log4j日志实现框架
+        提示appender没有加载，需要在执行日志之前做相应的加载工作（初始化）
+        我们可以将log4j的配置文件导入使用
+        测试结果为log4j的日志打印，而且格式和级别完全是遵循log4j的配置文件进行的输出 */
+        Logger logger = LoggerFactory.getLogger(Slf4jDemo.class);
+        logger.trace("trace信息");
+        logger.debug("debug信息");
+        logger.info("info信息");
+        logger.warn("warn信息");
+        logger.error("error信息");
+    }
 }
