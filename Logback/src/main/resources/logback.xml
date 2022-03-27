@@ -22,6 +22,7 @@
         那么下面我们配置的输出方式中，就可以重复的引用该配置（以下配置输出格式就不用配置多次了）
     -->
     <property name="pattern_1" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c %M %L %thread %m%n"/>
+    <property name="pattern_2" value="[%-5level]%d{yyyy-MM-dd HH:mm:ss.SSS}%c%M%L%thread%m%n"></property>
 
     <!--    配置文件的输出路径-->
     <property name="LogDir" value="D://logs"/>
@@ -33,6 +34,19 @@
         <!--        设置输出格式-->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${pattern_1}</pattern>
+        </encoder>
+    </appender>
+
+    <!--    配置保存日志信息到html文件的appender-->
+    <appender name="htmlFileAppender" class="ch.qos.logback.core.FileAppender">
+        <!-- 配置保存日志文件的位置-->
+        <file>${LogDir}/logback.html</file>
+        <!--  设置输出格式-->
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <!-- 格式引用通用属性配置 -->
+                <pattern>${pattern_2}</pattern>
+            </layout>
         </encoder>
     </appender>
 
@@ -67,5 +81,6 @@
         <!--<appender-ref ref="consoleFilterAppender"/>-->
         <appender-ref ref="consoleAppender"/>
         <appender-ref ref="fileAppender"/>
+        <appender-ref ref="htmlFileAppender"/>
     </root>
 </configuration>
