@@ -65,4 +65,32 @@ public class LogbackTest {
         logger.debug("debug信息");
         logger.trace("trace信息");
     }
+
+    public void test05() {
+        /*
+            日志拆分和归档压缩
+                重要标签来源：
+                查看源码
+                RollingFileAppender类中找到rollingPolicy属性
+                SizeAndTimeBasedRollingPolicy类中找到maxFileSize属性
+                这些属性在类中都是以set方法的形式进行的赋值
+                我们在配置文件中配置的信息，其实找到的都是这些属性的set方法
+
+                在TimeBasedRollingPolicy找到
+                static final String FNP_NOT_SET =
+                "The FileNamePattern option must be set before using TimeBasedRollingPolicy. ";
+
+                只要我们要使用到日志的拆分
+                FileNamePattern属性是必须要使用到了
+         */
+
+        for (int i = 0; i < 1000; i++) {
+            Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+            logger.error("error信息");
+            logger.warn("warn信息");
+            logger.info("info信息");
+            logger.debug("debug信息");
+            logger.trace("trace信息");
+        }
+    }
 }
