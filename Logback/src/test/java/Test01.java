@@ -3,14 +3,20 @@ import org.junit.Test;
 
 public class Test01 {
     @Test
-    public void test01(){
+    public void test01() {
         LogbackTest logbackTest = new LogbackTest();
         logbackTest.test01();
     }
 
     @Test
-    public void test02(){
+    public void test02() {
         LogbackTest logbackTest = new LogbackTest();
         logbackTest.test02();
+    }
+
+    @Test
+    public void test03() {
+        LogbackTest logbackTest = new LogbackTest();
+        logbackTest.test03();
     }
 }

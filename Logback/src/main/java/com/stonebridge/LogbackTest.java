@@ -35,4 +35,17 @@ public class LogbackTest {
         logger.debug("debug信息");
         logger.trace("trace信息");
     }
+
+    public void test03() {
+        /*
+            在实际的生产环境中，我们更希望将日志信息保留在文件中
+            在文件中，默认是以追加日志的形式做记录
+         */
+        Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+        logger.error("error信息");
+        logger.warn("warn信息");
+        logger.info("info信息");
+        logger.debug("debug信息");
+        logger.trace("trace信息");
+    }
 }
