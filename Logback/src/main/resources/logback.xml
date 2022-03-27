@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--1.根标签叫做configuration，一切配置都是在根标签中进行操作的-->
+<configuration>
+    <!--
+    2.配置文件通用的属性
+        <property name="" value=""></property>
+        所谓配置文件中的通用属性是为了让接下来的配置更加方便引用
+        通过以${name}的形式，方便的取得value值
+        通过取得的value值可以做文件的其他配置而使用
+    -->
+    <!--
+    3.我们在此可以先做日志输出格式相关的配置
+        %-10level  级别 案例为设置10个字符，左对齐
+        %d{yyyy-MM-dd HH:mm:ss.SSS} 日期
+        %c  当前类全限定名
+        %M  当前执行日志的方法
+        %L  行号
+        %thread 线程名称
+        %m或者%msg    信息
+        %n  换行
+        以property的形式将日志输出格式配置成为文件的通用的属性
+        那么下面我们配置的输出方式中，就可以重复的引用该配置（以下配置输出格式就不用配置多次了）
+    -->
+    <property name="pattern_1" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c %M %L %thread %m%n"/>
+    <!-- 4.配置控制台appender-->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <!--
+            5.表示对于日志输出目标的配置
+            默认：System.out 表示以黑色字体输出日志(默认)
+            设置：System.err 表示以红色字体输出日志
+        -->
+        <target>System.err</target>
+
+        <!--
+            6.配置日志输出格式
+            手动配置格式的方式
+            直接引入上述的通用属性即可
+        -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!-- 7.格式引用通用属性配置 -->
+            <pattern>${pattern_1}</pattern>
+        </encoder>
+    </appender>
+    <!--
+        8.配置日志记录器
+        配置root logger
+        level：配置日志级别
+        可以同时配置多个appender，做日志的多方向输出
+    -->
+    <root level="ALL">
+        <!-- 9.引入appender -->
+        <!--<appender-ref ref="roll"/>-->
+        <!--<appender-ref ref="consoleFilterAppender"/>-->
+        <appender-ref ref="consoleAppender"/>
+    </root>
+</configuration>

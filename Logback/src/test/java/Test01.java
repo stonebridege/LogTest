@@ -7,4 +7,10 @@ public class Test01 {
         LogbackTest logbackTest = new LogbackTest();
         logbackTest.test01();
     }
+
+    @Test
+    public void test02(){
+        LogbackTest logbackTest = new LogbackTest();
+        logbackTest.test02();
+    }
 }
