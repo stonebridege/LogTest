@@ -87,6 +87,25 @@
             <maxFileSize>10KB</maxFileSize>
         </rollingPolicy>
     </appender>
+
+    <!-- 配置控制台的appender 使用过滤器 -->
+    <appender name="consoleFilterAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <target>
+            System.err
+        </target>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern_1}</pattern>
+        </encoder>
+        <!--        配置过滤器-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 设置日志的输出级别 -->
+            <level>ERROR</level>
+            <!-- 高于level中设置的级别，则打印日志 -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 低于level中设置的级别，则屏蔽日志 -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
     <!--
         8.配置日志记录器
         配置root logger
@@ -95,7 +114,7 @@
     -->
     <root level="ALL">
         <!-- 9.引入appender -->
-        <appender-ref ref="roll"/>
+        <appender-ref ref="consoleFilterAppender"/>
         <!--<appender-ref ref="consoleFilterAppender"/>-->
         <!--        <appender-ref ref="consoleAppender"/>-->
         <!--        <appender-ref ref="fileAppender"/>-->

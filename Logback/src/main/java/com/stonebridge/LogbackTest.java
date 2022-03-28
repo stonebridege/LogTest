@@ -93,4 +93,15 @@ public class LogbackTest {
             logger.trace("trace信息");
         }
     }
+
+    public void test06() {
+//        我们可以在appender中添加过滤器，以此对日志进行更细粒度的打印
+        Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+        logger.error("error信息");
+        logger.warn("warn信息");
+        logger.info("info信息");
+        logger.debug("debug信息");
+        logger.trace("trace信息");
+    }
+
 }

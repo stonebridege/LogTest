@@ -31,4 +31,10 @@ public class Test01 {
         LogbackTest logbackTest = new LogbackTest();
         logbackTest.test05();
     }
+
+    @Test
+    public void test06() {
+        LogbackTest logbackTest = new LogbackTest();
+        logbackTest.test06();
+    }
 }
