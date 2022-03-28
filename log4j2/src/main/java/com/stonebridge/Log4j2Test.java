@@ -26,4 +26,26 @@ public class Log4j2Test {
         logger.debug("debug信息");
         logger.trace("trace信息");
     }
+
+    public void test02() {
+
+        /*
+            使用配置文件
+            log4j2是参考logback创作出来的，所以配置文件也是使用xml
+            log4j2同样是默认加载类路径（resources）下的log4j2.xml文件中的配置
+
+            根标签，所有日志相关信息，都是在根标签中进行配置
+            <Configuration status="debug" monitorInterval="数值"></Configuration>
+            在根标签中，可以加属性
+            status="debug" 日志框架本身的日志输出级别
+            monitorInterval="5" 自动加载配置文件的间隔时间，不低于5秒
+         */
+        Logger logger = LogManager.getLogger(Log4j2Test.class);
+        logger.fatal("fatal信息");
+        logger.error("error信息");
+        logger.warn("warn信息");
+        logger.info("info信息");
+        logger.debug("debug信息");
+        logger.trace("trace信息");
+    }
 }
