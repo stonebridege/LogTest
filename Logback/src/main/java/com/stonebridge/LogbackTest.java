@@ -164,4 +164,37 @@ public class LogbackTest {
         logger.trace("trace信息");
     }
 
+    public void test09(){
+        /*
+            关于logback补充：
+                1.异步日志：
+                    可配置属性
+                    配置了一个阈值
+                    当队列的剩余容量小于这个阈值的时候，当前日志的级别 trace、debug、info这3个级别的日志将被丢弃
+                    设置为0，说明永远都不会丢弃trace、debug、info这3个级别的日志
+                    <discardingThreshold>0</discardingThreshold>
+                    配置队列的深度，这个值会影响记录日志的性能，默认值就是256
+                    <queueSize>256</queueSize>
+                    关于这两个属性，一般情况下，我们使用默认值即可
+                    不要乱配置，会影响系统性能，了解其功能即可
+
+                2.关于不同的日志实现，配置文件也是不同的
+                    例如：
+                        log4j经常使用的是properties属性文件
+                        logback使用的是xml配置文件
+
+                        如果我们遇到了一种情况，就是需要将以前的log4j，改造为使用logback
+                        应该如何处理
+                        我们可以使用工具
+
+                        访问logback官网
+                        找到log4j.properties转换器
+
+                        只要是二者兼容的技术，才会被翻译
+                        如果是log4j独立的技术，logback没有，或者是有这个技术但是并不兼容转义
+                        那么这个工具则不会为我们进行翻译
+                        如果是遇到简单的配置，我们可以使用工具
+         */
+    }
+
 }
