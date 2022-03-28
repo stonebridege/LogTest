@@ -104,4 +104,49 @@ public class LogbackTest {
         logger.trace("trace信息");
     }
 
+    public void test07() {
+        /*
+            按照当前的代码执行顺序，代码肯定是按照从上向下的顺序执行。上面的代码完全执行完毕后，才会执行下面的代码
+
+            由此得出会出现的问题：
+                只要是在记录日志，那么系统本身的功能就处于一种停滞的状态；当日志记录完毕后，才会执行其他的代码。
+                如果日志记录量非常庞大的话，那么我们对于系统本身业务代码的执行效率会非常低。所以logback为我们提供了异步日志的功能。
+                配置方式：
+                    1.配置异步日志
+                        在异步日志中引入我们真正需要输出的appender
+                        <appender name="asyncAppender" class="ch.qos.logback.classic.AsyncAppender">
+                            <appender-ref ref="consoleAppender"/>
+                        </appender>
+                    2.在rootlogger下引入异步日志
+                        <appender-ref ref="asyncAppender"/>
+                所谓异步日志的原理是：
+                    系统会为日志操作单独的分配出来一根线程，原来用来执行当前方法的主线程会继续向下执行
+                    线程1：系统业务代码执行
+                    线程2：打印日志
+                    两根线程争夺CPU的使用权
+
+                在实际项目开发中，越大的项目对于日志的记录就越庞大
+                为了保证项目的执行效率，异步日志是一个很好的选择
+         */
+
+        Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+        //日志打印操作
+        int num=0;
+        for (int i = 0; i < 100; i++) {
+            num+=i;
+            logger.error("error信息");
+            logger.warn("warn信息");
+            logger.info("info信息");
+            logger.debug("debug信息");
+            logger.trace("trace信息");
+        }
+        System.out.println(num);
+        //系统本身业务相关的其他操作
+        System.out.println("1----------------------");
+        System.out.println("2----------------------");
+        System.out.println("3----------------------");
+        System.out.println("4----------------------");
+        System.out.println("5----------------------");
+    }
+
 }

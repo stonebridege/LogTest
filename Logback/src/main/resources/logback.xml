@@ -106,6 +106,10 @@
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
+<!--    配置异步日志-->
+    <appender name="asyncAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="consoleAppender"/>
+    </appender>
     <!--
         8.配置日志记录器
         配置root logger
@@ -114,7 +118,7 @@
     -->
     <root level="ALL">
         <!-- 9.引入appender -->
-        <appender-ref ref="consoleFilterAppender"/>
+        <appender-ref ref="asyncAppender"/>
         <!--<appender-ref ref="consoleFilterAppender"/>-->
         <!--        <appender-ref ref="consoleAppender"/>-->
         <!--        <appender-ref ref="fileAppender"/>-->
