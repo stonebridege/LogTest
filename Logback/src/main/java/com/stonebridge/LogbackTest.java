@@ -131,9 +131,9 @@ public class LogbackTest {
 
         Logger logger = LoggerFactory.getLogger(LogbackTest.class);
         //日志打印操作
-        int num=0;
+        int num = 0;
         for (int i = 0; i < 100; i++) {
-            num+=i;
+            num += i;
             logger.error("error信息");
             logger.warn("warn信息");
             logger.info("info信息");
@@ -147,6 +147,21 @@ public class LogbackTest {
         System.out.println("3----------------------");
         System.out.println("4----------------------");
         System.out.println("5----------------------");
+    }
+
+    public void test08() {
+
+        /*
+
+            自定义logger
+
+         */
+        Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+        logger.error("error信息");
+        logger.warn("warn信息");
+        logger.info("info信息");
+        logger.debug("debug信息");
+        logger.trace("trace信息");
     }
 
 }

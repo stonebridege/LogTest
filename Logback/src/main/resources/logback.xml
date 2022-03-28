@@ -106,7 +106,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
-<!--    配置异步日志-->
+    <!--    配置异步日志-->
     <appender name="asyncAppender" class="ch.qos.logback.classic.AsyncAppender">
         <appender-ref ref="consoleAppender"/>
     </appender>
@@ -118,10 +118,18 @@
     -->
     <root level="ALL">
         <!-- 9.引入appender -->
-        <appender-ref ref="asyncAppender"/>
+        <!--        <appender-ref ref="asyncAppender"/>-->
         <!--<appender-ref ref="consoleFilterAppender"/>-->
         <!--        <appender-ref ref="consoleAppender"/>-->
         <!--        <appender-ref ref="fileAppender"/>-->
         <!--        <appender-ref ref="htmlFileAppender"/>-->
     </root>
+    <!--
+        additivity="false"
+        表示不继承rootlogger
+    -->
+    <logger name="com.stonebridge.LogbackTest" level="info" additivity="false">
+        <!-- 在自定义logger中配置appender -->
+        <appender-ref ref="consoleAppender"/>
+    </logger>
 </configuration>
