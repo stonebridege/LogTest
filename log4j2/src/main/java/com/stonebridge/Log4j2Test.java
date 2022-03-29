@@ -103,29 +103,55 @@ public class Log4j2Test {
         }
     }
 
-public void test06() {
+    public void test06() {
 
-    /*
-        异步日志实现（单独分配线程做日志的记录）
-            方式1：使用AsyncAppender的方式
+        /*
+            异步日志实现（单独分配线程做日志的记录）
+                方式1：使用AsyncAppender的方式
 
-            1.添加异步日志依赖
-            2.在Appenders标签中，对于异步进行配置
-                使用Async标签
-            3.rootlogger引用Async
-     */
-    //日志的记录
-    for (int i = 0; i < 500; i++) {
-        logger.error("error信息");
-        logger.warn("warn信息");
-        logger.info("info信息");
-        logger.debug("debug信息");
-        logger.trace("trace信息");
+                1.添加异步日志依赖
+                2.在Appenders标签中，对于异步进行配置
+                    使用Async标签
+                3.rootlogger引用Async
+         */
+        //日志的记录
+        for (int i = 0; i < 500; i++) {
+            logger.error("error信息");
+            logger.warn("warn信息");
+            logger.info("info信息");
+            logger.debug("debug信息");
+            logger.trace("trace信息");
+        }
+
+        //系统业务逻辑
+        for (int i = 0; i < 200; i++) {
+            System.out.println("------------------");
+        }
     }
 
-    //系统业务逻辑
-    for (int i = 0; i < 100; i++) {
-        System.out.println("------------------");
+    public void test07() {
+        /*
+            异步日志实现（单独分配线程做日志的记录）
+                方式2：使用AsyncLogger的方式
+                全局异步
+                    所有的日志都是异步的日志记录，在配置文件上不用做任何的改动
+                    只需要在类路径resources下添加一个properties属性文件，做一步配置即可
+                    文件名要求是：log4j2.component.properties
+                    Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+         */
+        //日志的记录
+        for (int i = 0; i < 2000; i++) {
+            logger.error("error信息");
+            logger.warn("warn信息");
+            logger.info("info信息");
+            logger.debug("debug信息");
+            logger.trace("trace信息");
+        }
+        //系统业务逻辑
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("------------------");
+        }
     }
-}
+
+
 }

@@ -42,10 +42,10 @@
             <!-- 在同一目录下，文件的个数限制，如果超出了设置的数值，则根据时间进行覆盖，新的覆盖旧的规则-->
             <DefaultRolloverStrategy max="30"/>
         </RollingFile>
-        <Async name="myAsync">
-            <!--  将控制台输出做异步的操作-->
-            <AppenderRef ref="consoleAppender"/>
-        </Async>
+<!--        <Async name="myAsync">-->
+<!--            &lt;!&ndash;  将控制台输出做异步的操作&ndash;&gt;-->
+<!--            <AppenderRef ref="consoleAppender"/>-->
+<!--        </Async>-->
     </Appenders>
     <!--  配置logger-->
     <Loggers>
@@ -53,7 +53,7 @@
         <Root level="trace">
             <!--  引用Appender-->
             <!--            <AppenderRef ref="consoleAppender"/>-->
-            <AppenderRef ref="myAsync"/>
+            <AppenderRef ref="consoleAppender"/>
         </Root>
     </Loggers>
 </Configuration>
