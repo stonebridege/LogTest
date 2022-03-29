@@ -14,4 +14,10 @@ public class TestDemo {
         test.test03();
     }
 
+    @Test
+    public void test04() {
+        Log4j2Test test = new Log4j2Test();
+        test.test04();
+    }
+
 }

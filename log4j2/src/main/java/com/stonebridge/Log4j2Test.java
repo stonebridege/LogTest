@@ -75,4 +75,16 @@ public class Log4j2Test {
         logger.debug("debug信息");
         logger.trace("trace信息");
     }
+
+    public void test04(){
+        /*
+            将日志输出到文件中
+         */
+        Logger logger = LoggerFactory.getLogger(Log4j2Test.class);
+        logger.error("error信息");
+        logger.warn("warn信息");
+        logger.info("info信息");
+        logger.debug("debug信息");
+        logger.trace("trace信息");
+    }
 }

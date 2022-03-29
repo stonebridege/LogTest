@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--<Configuration status="debug">-->
 <Configuration>
+    <!--    配置全局通用属性-->
+    <properties>
+        <property name="logDir">D://logs</property>
+    </properties>
     <!--  配置appender-->
     <Appenders>
-        <Console name="consoleAppender" target="SYSTEM_ERR"/>
+        <!--        配置控制台输出-->
+        <!--        <Console name="consoleAppender" target="SYSTEM_ERR"/>-->
+        <!--        配置文件输出-->
+        <File name="fileAppender" fileName="${logDir}//log4j2.log">
+            <!-- 配置文件输出格式 -->
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %m%n"/>
+        </File>
     </Appenders>
     <!--  配置logger-->
     <Loggers>
         <!--  配置rootLogger-->
         <Root level="trace">
             <!--  引用Appender-->
-            <AppenderRef ref="consoleAppender"/>
+            <!--            <AppenderRef ref="consoleAppender"/>-->
+            <AppenderRef ref="fileAppender"/>
         </Root>
     </Loggers>
 </Configuration>
