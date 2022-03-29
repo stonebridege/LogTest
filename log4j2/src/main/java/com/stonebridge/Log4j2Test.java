@@ -153,5 +153,37 @@ public class Log4j2Test {
         }
     }
 
+    public void test08() {
+        /*
 
+            异步日志实现（单独分配线程做日志的记录）
+                方式2：使用AsyncLogger的方式
+                混合异步：
+                    可以在应用中同时使用同步日志和异步日志，这使得日志的配置及输出会更加的灵活
+                需求：
+                    假设我们现在有自定义的logger（例如：com.stonebridge）让自定义的logger是异步的
+                    让rootlogger是同步的
+                注意：
+                    在做测试前，一定要将全局的异步配置（log4j2.component.properties）注释掉
+                对于当前的logger（Log4j2Test01.class）
+                Log4j2Test01本身就是在我们自定义的logger路径下的
+                注意：
+                    如果使用异步日志
+                        AsyncAppender、AsyncLogger不要同时出现，没有这个需求，效果也不会叠加
+                        如果同时出现，那么效率会以AsyncAppender为主
+                        AsyncLogger的全局异步和混合异步也不要同时出现，没有这个需求，效果也不会叠加
+         */
+        //日志的记录
+        for (int i = 0; i < 2000; i++) {
+            logger.error("error信息");
+            logger.warn("warn信息");
+            logger.info("info信息");
+            logger.debug("debug信息");
+            logger.trace("trace信息");
+        }
+        //系统业务逻辑
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("------------------");
+        }
+    }
 }
