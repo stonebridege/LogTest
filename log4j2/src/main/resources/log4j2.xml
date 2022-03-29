@@ -8,7 +8,7 @@
     <!--  配置appender-->
     <Appenders>
         <!--        配置控制台输出-->
-        <!--        <Console name="consoleAppender" target="SYSTEM_ERR"/>-->
+        <Console name="consoleAppender" target="SYSTEM_OUT"/>
         <!--        配置文件输出-->
         <File name="fileAppender" fileName="${logDir}//log4j2.log">
             <!-- 配置文件输出格式 -->
@@ -42,6 +42,10 @@
             <!-- 在同一目录下，文件的个数限制，如果超出了设置的数值，则根据时间进行覆盖，新的覆盖旧的规则-->
             <DefaultRolloverStrategy max="30"/>
         </RollingFile>
+        <Async name="myAsync">
+            <!--  将控制台输出做异步的操作-->
+            <AppenderRef ref="consoleAppender"/>
+        </Async>
     </Appenders>
     <!--  配置logger-->
     <Loggers>
@@ -49,7 +53,7 @@
         <Root level="trace">
             <!--  引用Appender-->
             <!--            <AppenderRef ref="consoleAppender"/>-->
-            <AppenderRef ref="rollingFile"/>
+            <AppenderRef ref="myAsync"/>
         </Root>
     </Loggers>
 </Configuration>

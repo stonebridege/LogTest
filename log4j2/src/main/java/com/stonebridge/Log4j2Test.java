@@ -102,4 +102,30 @@ public class Log4j2Test {
             logger.trace("trace信息");
         }
     }
+
+public void test06() {
+
+    /*
+        异步日志实现（单独分配线程做日志的记录）
+            方式1：使用AsyncAppender的方式
+
+            1.添加异步日志依赖
+            2.在Appenders标签中，对于异步进行配置
+                使用Async标签
+            3.rootlogger引用Async
+     */
+    //日志的记录
+    for (int i = 0; i < 500; i++) {
+        logger.error("error信息");
+        logger.warn("warn信息");
+        logger.info("info信息");
+        logger.debug("debug信息");
+        logger.trace("trace信息");
+    }
+
+    //系统业务逻辑
+    for (int i = 0; i < 100; i++) {
+        System.out.println("------------------");
+    }
+}
 }
