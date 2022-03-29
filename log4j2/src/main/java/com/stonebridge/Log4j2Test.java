@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class Log4j2Test {
     Logger logger = LoggerFactory.getLogger(Log4j2Test.class);
+
     public void test01() {
  /*
 
@@ -76,7 +77,7 @@ public class Log4j2Test {
         logger.trace("trace信息");
     }
 
-    public void test04(){
+    public void test04() {
         /*
             将日志输出到文件中
          */
@@ -86,5 +87,19 @@ public class Log4j2Test {
         logger.info("info信息");
         logger.debug("debug信息");
         logger.trace("trace信息");
+    }
+
+    public void test05() {
+        /*
+            日志的拆分
+         */
+        Logger logger = LoggerFactory.getLogger(Log4j2Test.class);
+        for (int i = 0; i < 2000; i++) {
+            logger.error("error信息");
+            logger.warn("warn信息");
+            logger.info("info信息");
+            logger.debug("debug信息");
+            logger.trace("trace信息");
+        }
     }
 }

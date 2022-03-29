@@ -8,6 +8,7 @@ public class TestDemo {
         Log4j2Test test = new Log4j2Test();
         test.test01();
     }
+
     @Test
     public void test03() {
         Log4j2Test test = new Log4j2Test();
@@ -18,6 +19,12 @@ public class TestDemo {
     public void test04() {
         Log4j2Test test = new Log4j2Test();
         test.test04();
+    }
+
+    @Test
+    public void test05() {
+        Log4j2Test test = new Log4j2Test();
+        test.test05();
     }
 
 }
