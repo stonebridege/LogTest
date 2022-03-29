@@ -8,5 +8,10 @@ public class TestDemo {
         Log4j2Test test = new Log4j2Test();
         test.test01();
     }
+    @Test
+    public void test03() {
+        Log4j2Test test = new Log4j2Test();
+        test.test03();
+    }
 
 }
