@@ -1,6 +1,7 @@
 package com.stonebridge.springbootlog;
 
 import com.stonebridge.springbootlog.test.TestLog;
+import com.stonebridge.springbootlog.test.TestLog1;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -31,8 +32,8 @@ class SpringbootlogApplicationTests {
     }
     @Test
     void test5() {
-        TestLog testLog = new TestLog();
-        testLog.test05();
+        TestLog1 testLog = new TestLog1();
+        testLog.test06();
     }
 
 }
