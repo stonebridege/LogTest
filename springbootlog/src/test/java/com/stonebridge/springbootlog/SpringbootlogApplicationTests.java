@@ -29,5 +29,10 @@ class SpringbootlogApplicationTests {
         TestLog testLog = new TestLog();
         testLog.test03();
     }
+    @Test
+    void test5() {
+        TestLog testLog = new TestLog();
+        testLog.test05();
+    }
 
 }
